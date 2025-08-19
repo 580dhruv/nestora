@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+     "users",
+    "properties",
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,13 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH0_DOMAIN = "dev-v4xyltqxegoj05u5.us.auth0.com"
+API_IDENTIFIER = "https://nestora.local/api"   # Audience from Auth0 API
+ALGORITHMS = ["RS256"]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "users.auth0backend.Auth0JSONWebTokenAuthentication",
+    ),
+}
