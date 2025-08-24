@@ -4,20 +4,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import InputFormPage from './pages/InputFormPage';
 import PredictionResultPage from './pages/PredictionResultPage';
-import LoginPage from './pages/LoginPage';
 import SellPropertyPage from './pages/SellPropertyPage';
 import BuyPropertyPage from './pages/BuyPropertyPage';
 import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import PropertyDetailsPage from './pages/PropertyDetailsPage';
+import LoginRegisterPage from './pages/LoginRegisterPage';
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginRegisterPage />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/input" element={<InputFormPage />} />
         <Route path="/result" element={<PredictionResultPage />} />
@@ -26,7 +26,7 @@ function App() {
         <Route path="/about" element={<AboutPage/>}/>
         <Route path="/privacy" element={<PrivacyPage/>}/>
         <Route path="/terms" element={<TermsPage/>}/>
-        <Route path="/property/:id" element={<PropertyDetailsPage />} />
+        <Route path="/property/:property_id" element={<PropertyDetailsPage />} />
       </Routes>
     </Router>
     

@@ -1,5 +1,4 @@
 import { navLinks } from "../options/navlinks";
-import prediction_result from "../images/prediction_result.png";
 import Navbar from "../components/Navbar";
 
 const PredictionResultPage=()=>{
@@ -9,7 +8,6 @@ const PredictionResultPage=()=>{
       {/* <!-- Header --> */}
       <Navbar
         navLinks={navLinks}
-        profileImage={prediction_result}
         showProfile={true}
       />
 

@@ -33,6 +33,7 @@ const InputFormPage=()=> {
       setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+
     return (
     <>
      <div  className="bg-cover bg-center h-screen w-full text-[#111618] min-h-screen overflow-x-hidden"

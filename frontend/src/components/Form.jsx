@@ -12,8 +12,9 @@ import { exteriorMaterials } from "../options/exteriorMaterials";
 import { basementTypes } from "../options/basementType";
 import { foundationTypes } from "../options/foundationType";
 import { poolOptions } from "../options/poolType";
-
+import { useNavigate } from "react-router-dom";
 const Form =({formData,handleChange})=> {
+    const navigate = useNavigate();
     console.log(formData)
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,6 +50,28 @@ const Form =({formData,handleChange})=> {
           alert("Something went wrong while predicting. Please try again.");
         }
       };
+      const handlePredict = async (e) => {
+        navigate('/result')
+        // e.preventDefault();
+      
+        // try {
+        //   const response = await fetch("http://localhost:8000/api/predict/", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(formData), // All form fields
+        //   });
+      
+        //   const data = await response.json();
+        //   if (response.ok) {
+        //     alert("Predicted Price: $" + data.predicted_price);
+        //   } else {
+        //     alert("Error: " + data.error);
+        //   }
+        // } catch (err) {
+        //   console.error(err);
+        //   alert("Something went wrong");
+        // }
+      };
       
     return (
     <form onSubmit={handleSubmit} className="flex justify-center py-5 px-4 lg:px-40">
@@ -62,7 +85,7 @@ const Form =({formData,handleChange})=> {
             {/* <!-- State Select --> */}
            
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">State
+                <span className="text-base font-medium text-slate-800">State
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="state" // must match key in formData
@@ -84,7 +107,7 @@ const Form =({formData,handleChange})=> {
 
             {/* <!-- City Select --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">City
+                <span className="text-base font-medium text-slate-800">City
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="city" // matches key in formData
@@ -106,7 +129,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Address Input --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">Address
+                <span className="text-base font-medium text-slate-800">Address
                 <label className="flex flex-col min-w-40 flex-1">
                     <input
                     type="text"
@@ -123,7 +146,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Square Footage --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">Square Foot
+                <span className="text-base font-medium text-slate-800">Square Foot
                 <label className="flex flex-col min-w-40 flex-1">
                     <input
                     name="squareFootage"
@@ -139,7 +162,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Bedrooms --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">Number of bedrooms
+                <span className="text-base font-medium text-slate-800">Number of bedrooms
                 <label className="flex flex-col min-w-40 flex-1">
                     <input
                     type="number"
@@ -156,7 +179,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Bathrooms --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Number of bathrooms
+            <span className="text-base font-medium text-slate-800">Number of bathrooms
                 <label className="flex flex-col min-w-40 flex-1">
                     <input
                     type="number"
@@ -173,7 +196,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Year Built --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Year Built
+            <span className="text-base font-medium text-slate-800">Year Built
                 <label className="flex flex-col min-w-40 flex-1">
                     <input
                     type="number"
@@ -193,7 +216,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Lot Size --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Lot Size
+            <span className="text-base font-medium text-slate-800">Lot Size
                 <label className="flex flex-col min-w-40 flex-1">
                     <input
                     type="number"
@@ -210,7 +233,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Property Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">Property Type
+                <span className="text-base font-medium text-slate-800">Property Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="propertyType" // ✅ matches formData key
@@ -232,7 +255,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Heating Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Heating Type
+            <span className="text-base font-medium text-slate-800">Heating Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="heatingType" // ✅ should match the key in formData
@@ -254,7 +277,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Cooling Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">Cooling Type
+                <span className="text-base font-medium text-slate-800">Cooling Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="coolingType" // ✅ must match formData key
@@ -276,7 +299,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Parking Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Parking Type
+            <span className="text-base font-medium text-slate-800">Parking Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="parkingType"
@@ -298,7 +321,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Exterior Material --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <span class="text-base font-medium text-slate-800">Exterior Material
+                <span className="text-base font-medium text-slate-800">Exterior Material
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="exteriorMaterial"
@@ -320,7 +343,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Roof Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Roof Type
+            <span className="text-base font-medium text-slate-800">Roof Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="roofType"
@@ -342,7 +365,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Foundation Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Foundation Type
+            <span className="text-base font-medium text-slate-800">Foundation Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="foundationType"
@@ -364,7 +387,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Basement Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Basement Type
+            <span className="text-base font-medium text-slate-800">Basement Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="basementType"
@@ -386,7 +409,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Flooring Type --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Flooring Type
+            <span className="text-base font-medium text-slate-800">Flooring Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                         name="flooringType"
@@ -408,7 +431,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Fireplace --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Fireplace Type
+            <span className="text-base font-medium text-slate-800">Fireplace Type
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                         name="fireplace"
@@ -430,7 +453,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- Pool --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">Pool
+            <span className="text-base font-medium text-slate-800">Pool
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="pool"
@@ -452,7 +475,7 @@ const Form =({formData,handleChange})=> {
             
             {/* <!-- View --> */}
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-            <span class="text-base font-medium text-slate-800">View
+            <span className="text-base font-medium text-slate-800">View
                 <label className="flex flex-col min-w-40 flex-1">
                     <select
                     name="view"
@@ -479,15 +502,17 @@ const Form =({formData,handleChange})=> {
 
                 <button
                     type="button"
-                    onClick={handleSubmit}
+                    onClick={handlePredict}
                     className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#dce8f3] text-[#111618] text-base font-bold leading-normal tracking-[0.015em]"
                 >
                     <span className="truncate">Predict Price</span>
                 </button>
             </div>
+            
             </div>
         </div>
     </div>
+
     </form>
     )
 }

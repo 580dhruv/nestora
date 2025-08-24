@@ -11,7 +11,12 @@ const PropertyPage = ({ title = "Homes for Sale", properties = [] }) => {
   const handleClick = (id) => {
     navigate(`/property/${id}`);
   };
+  if (!properties || properties.length==0) {
+    return <div>No properties to show </div>
+  }
+  console.log("Properties:", properties);
 
+  
   return (
     <div className="relative flex min-h-screen flex-col bg-slate-50 overflow-x-hidden font-sans">
       {/* Navbar */}
@@ -25,15 +30,29 @@ const PropertyPage = ({ title = "Homes for Sale", properties = [] }) => {
       {/* Properties Grid */}
       <main className="flex-1">
         <div className="grid gap-4 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {properties.map((property, index) => (
-            <div
-              key={index}
-              onClick={() => handleClick(property.id)}
-              className="cursor-pointer"
-            >
-              <PropertyCard {...property} />
-            </div>
-          ))}
+        {Array.isArray(properties) && properties.length > 0 ? (
+            properties.map((property, index) => (
+              <div
+                key={index}
+                onClick={() => handleClick(property._id || property.id)}
+                className="cursor-pointer"
+              >
+                <PropertyCard
+                id={property._id}
+                image={property.images?.[0]}   // take first image
+                price={property.price?.toLocaleString()}
+                beds={property.beds}
+                baths={property.baths}
+                size={`${property.size} sqft`}
+                address={property.address}
+              />
+
+              </div>
+            ))
+          ) : (
+            <div>No properties to show</div>
+          )}
+          
         </div>
       </main>
 

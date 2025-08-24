@@ -13,8 +13,10 @@ createRoot(root).render(
     domain={domain}
     clientId={clientId}
     authorizationParams={{
-      redirect_uri: window.location.origin + window.location.pathname, 
+      redirect_uri: window.location.origin,
     }}
+    useRefreshTokens={true}       // ✅ Persist sessions
+    cacheLocation="localstorage"   // ✅ Store tokens in localStorage
     onRedirectCallback={(appState) => {
       window.history.replaceState(
         {},
